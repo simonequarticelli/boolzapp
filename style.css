@@ -1,0 +1,104 @@
+*{
+  box-sizing: border-box;
+  padding:0;
+  margin:0;
+}
+.container__boolzapp{
+  width: 100vw;
+  height: 100vh;
+  background-color: #dfdfdf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.layout__container__boolzapp{
+  height: 130px;
+  width: 100vw;
+  background-color: #009688;
+  position: absolute;
+  top: 0;
+}
+.container__chat{
+  width: 95%;
+  margin: 0 auto;
+  height: 95%;
+  z-index: 2;
+  background-color: white;
+  box-shadow: 5px 10px 8px #888888;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+.message{
+  background-image: url('http://i.imgur.com/bc3eMdZ.png');
+  background-size: contain;
+  margin-left: 30%;
+  width: 70%;
+  height:80%;
+}
+.clearfix::after{
+  content: '';
+  display: table;
+  clear: both;
+}
+.contact{
+  width: 30%;
+  height: 100%;
+  position: absolute;
+}
+.write{
+  height: 10%;
+  width: 70%;
+  margin-left: 30%;
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeeeee;
+}
+.container_message{
+  overflow: auto;
+}
+.info__contact{
+  height: 10%;
+  width: 70%;
+  margin-left: 30%;
+  align-self: flex-start;
+  background-color: #eeeeee;;
+}
+.utente{
+  background-color: lightgreen;
+  border-radius: 15px;
+  width: 200px;
+  float: right;
+  padding:10px;
+  margin: 10px;
+}
+.interlocutore{
+  background-color: white;
+  border-radius: 15px;
+  width: 200px;
+  float: left;
+  padding:10px;
+  margin: 10px;
+}
+button{
+  padding: 5px;
+}
+input{
+  border-radius: 20px;
+  width: 700px;
+  height: 40px;
+  border:0;
+  margin: 10px;
+}
+.far{
+  margin-right: 20px;
+  color: grey;
+  cursor: pointer;
+}
+.fas{
+  margin-left: 20px;
+  color: grey;
+  cursor: pointer;
+}
