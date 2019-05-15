@@ -40,7 +40,5 @@ $(document).ready(function(){
   });
 
 
-    // word-break:
-
 
 });

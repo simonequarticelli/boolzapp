@@ -69,6 +69,7 @@
   align-self: flex-end;
   padding:10px;
   margin: 10px;
+  word-break: break-all;
 }
 .interlocutore{
   background: #fff;
@@ -77,6 +78,7 @@
   align-self: flex-start;
   padding:10px;
   margin: 10px;
+  word-break: break-all;
 }
 input{
   border-radius: 20px;
