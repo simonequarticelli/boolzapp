@@ -26,18 +26,69 @@ $(document).ready(function(){
         $('.testo').val('');
 
         //faccio il clone del messaggio
-        var copia = $('.template .utente').clone();
+        var copia_utente = $('.template .utente').clone();
 
         //scrivo il messaggio nella classe .utente
-        copia.text(messaggio_utente);
+        copia_utente.text(messaggio_utente);
 
         //appendo il messaggio nella classe .message
-        $('.message').append(copia);
+        $('.message').append(copia_utente);
 
 
       }
+      setTimeout(function(){
+        switch (messaggio_utente) {
+          case 'ciao':
+            //faccio il clone del messaggio
+            var copia_cpu = $('.template .interlocutore').clone();
+            //scrivo il messaggio nella classe .utente
+            copia_cpu.text('ciao');
+            //appendo il messaggio nella classe .message
+            $('.message').append(copia_cpu);
+          break;
+          case 'come stai?':
+            //faccio il clone del messaggio
+            var copia_cpu = $('.template .interlocutore').clone();
+            //scrivo il messaggio nella classe .utente
+            copia_cpu.text('bene tu?');
+            //appendo il messaggio nella classe .message
+            $('.message').append(copia_cpu);
+          break;
+          case 'bene':
+            //faccio il clone del messaggio
+            var copia_cpu = $('.template .interlocutore').clone();
+            //scrivo il messaggio nella classe .utente
+            copia_cpu.text('ok');
+            //appendo il messaggio nella classe .message
+            $('.message').append(copia_cpu);
+          break;
+          default:
+          //faccio il clone del messaggio
+          var copia_cpu = $('.template .interlocutore').clone();
+          //scrivo il messaggio nella classe .utente
+          copia_cpu.text('ok');
+          //appendo il messaggio nella classe .message
+          $('.message').append(copia_cpu);
+
+        }
+      }, 1000);
     }
   });
+
+  $('#search').keyup(function(){
+    var name_seacrh = $('#search').val();
+    console.log(name_seacrh);
+
+    $('.contact').show();
+
+    $('.contact').each(function(){
+
+      if ($(this).text().toLowerCase() != name_seacrh.toLowerCase()) {
+        $(this).hide();
+      }
+    })
+  });
+
 
 
 

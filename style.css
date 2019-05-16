@@ -40,10 +40,39 @@
   flex-direction: column;
   overflow: auto;
 }
-.contact{
+.contact__list{
   width: 30%;
   height: 100%;
   position: absolute;
+}
+.search__contact{
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contact{
+  height: 15%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid lightgrey;
+}
+.search__contact .search{
+  width: 300px;
+}
+.contact__current{
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #eeeeee;
+  border-right: 1px solid lightgrey;
+}
+.contact__current__right{
+  padding:20px;
+  font-size: 20px;
 }
 .write{
   height: 10%;
@@ -60,7 +89,22 @@
   width: 70%;
   margin-left: 30%;
   align-self: flex-start;
-  background-color: #eeeeee;;
+  background-color: #eeeeee;
+  display: flex;
+  align-items: center;
+  padding:10px;
+}
+.info__contact__right{
+  font-size: 20px;
+  position: absolute;
+  right: 0;
+  padding:10px;
+}
+.info__contact__left img,
+.contact__current__left img{
+  border-radius: 50%;
+  width: 45px;
+  margin: 0px 10px;
 }
 .utente{
   background: #e1ffc7;
@@ -70,6 +114,7 @@
   padding:10px;
   margin: 10px;
   word-break: break-all;
+  position: relative;
 }
 .interlocutore{
   background: #fff;
@@ -97,9 +142,6 @@ input{
   margin-left: 20px;
   color: grey;
   cursor: pointer;
-}
-.active{
-  display: block;
 }
 .template{
   display: none;
