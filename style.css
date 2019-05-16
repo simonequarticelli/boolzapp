@@ -56,8 +56,14 @@
   display: flex;
   text-align: center;
   align-items: center;
-  justify-content: center;
   border-bottom: 1px solid lightgrey;
+}
+.contact:hover{
+  background-color: #eeeeee;
+  cursor: pointer;
+}
+img{
+  cursor: pointer;
 }
 .search__contact .search{
   width: 300px;
@@ -101,7 +107,8 @@
   padding:10px;
 }
 .info__contact__left img,
-.contact__current__left img{
+.contact__current__left img,
+.contact img{
   border-radius: 50%;
   width: 45px;
   margin: 0px 10px;

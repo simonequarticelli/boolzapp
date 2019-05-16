@@ -11,6 +11,14 @@
 // vengono visualizzati solo i contatti il cui nome contiene le lettere inserite
 // (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
 
+
+// Milestone 3
+// - Click sul contatto mostra la conversazione del contatto cliccato,
+// è possibile inserire nuovi messaggi per ogni conversazione
+// - Cancella messaggio: cliccando sul messaggio appare un menu a tendina
+// che permette di cancellare il messaggio selezionato
+
+
 $(document).ready(function(){
 
   //intercetto il tasto INVIO
@@ -76,17 +84,26 @@ $(document).ready(function(){
   });
 
   $('#search').keyup(function(){
-    var name_seacrh = $('#search').val();
-    console.log(name_seacrh);
 
-    $('.contact').show();
+    var name_search = $(this).val().toLowerCase();
+
+    console.log(name_search);
 
     $('.contact').each(function(){
 
-      if ($(this).text().toLowerCase() != name_seacrh.toLowerCase()) {
+      var name = $(this).find('.contact__name').text().toLowerCase();
+
+      console.log(name);
+
+      if (name.includes(name_search)) {
+        $(this).show();
+      }else{
         $(this).hide();
       }
-    })
+
+    });
+
+
   });
 
 
