@@ -153,3 +153,25 @@ input{
 .template{
   display: none;
 }
+.dropdown__menu{
+  width: 120px;
+  height: 100px;
+  position: absolute;
+  right: 0;
+  display: none;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 5px 10px 8px #888888;
+}
+.dropdown__menu ul li{
+  list-style-type: none;
+  cursor: pointer;
+  padding:10px;
+  text-align: center;  
+}
+.dropdown__menu ul li:hover{
+  background-color: #eeeeee;
+}
+.active{
+  display: block;
+}
