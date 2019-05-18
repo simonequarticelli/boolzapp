@@ -9,76 +9,177 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <!-- sfondo boolzapp -->
+    <!-- CONTENITORE BOOLLZAP -->
     <div class="container__boolzapp">
+      <!-- LAYOUT BOOLLZAP -->
       <div class="layout__container__boolzapp"></div>
 
+        <!-- CONTENITORE CHAT -->
         <div class="container__chat">
 
+          <!-- CONTATTO CORRENTE -->
           <div class="info__contact">
+
+            <!-- IMMAGINE DEL CONTATTO CORRENTE -->
             <div class="info__contact__img">
+              <img src="http://www.maisondolci.it/images/msndl-img/team/male.png" alt="">
             </div>
+
+            <!-- INFORMAZIONI CONTATTO CORRENTE -->
             <div class="info__contact__left">
-              <h4></h4>
+              <h4>Marco</h4>
               <small>ultimo accesso oggi alle</small>
             </div>
-            <div class="info__contact__right"><i class="fas fa-paperclip"></i><i class="fas fa-ellipsis-v"></i></div>
+
+            <!-- ICONE CONTATTO CORRENTE -->
+            <div class="info__contact__right">
+              <i class="fas fa-search"></i>
+              <i class="fas fa-paperclip"></i>
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
+
           </div>
 
-          <div class="contact__list">
+          <div class="search">
 
+            <!-- CONTATTO UTENTE -->
             <div class="contact__current">
               <div class="contact__current__left"><img src="https://lh3.googleusercontent.com/-84h-hr9U7_Q/UOR1s5wZp-I/AAAAAAAACYo/aNrn5fpZJbMbL40Dy3w9yqkiBZXc_f6fgCEwYBhgL/w140-h140-p/c98514f7-1610-4ef2-9557-43990c350ea8" alt=""></div>
-              <div class="contact__current__right"><i class="far fa-comment-dots"></i></i><i class="fas fa-ellipsis-v"></i></div>
+              <div class="contact__current__right">
+                <i class="far fa-comment-dots"></i>
+                <i class="fas fa-ellipsis-v"></i>
+              </div>
             </div>
 
-            <div class="search__contact"><i class="fas fa-search"></i><input id="search" placeholder='Cerca un contatto' type="text" name="" value=""></div>
-
-            <div class="contact">
-              <img src="http://www.maisondolci.it/images/msndl-img/team/male.png" alt="">
-              <div class="contact__name">Marco</div>
+            <div class="notifiche">
+              <i class="fas fa-bell-slash alert"></i>
+              <div class="">
+                <div>Ricevi notifiche di nuovi messaggi</div>
+                <div><a href="">Attiva notifiche desktop</a></div>
+              </div>
             </div>
 
-            <div class="contact">
-              <img src="https://villamafalda.com/wp-content/uploads/2017/04/Doctor_avatar1.png" alt="">
-              <div class="contact__name">Matteo</div>
+            <!-- INPUT RICERCA CONTATTI -->
+            <div class="search__contact">
+              <i class="fas fa-search"></i>
+              <input id="search" placeholder='Cerca un contatto' type="text" name="" value="">
             </div>
 
-            <div class="contact">
-              <img src="http://www.maisondolci.it/images/msndl-img/team/female.png" alt="">
-              <div class="contact__name">Martina</div>
-            </div>
           </div>
 
-          <div class="message"></div>
 
+
+
+
+
+          <!-- CONTATTI -->
+          <div class="contact__list">
+
+            <!-- LAYOUT CONTATTO -->
+            <div class="contact" data-contatto="marco">
+              <img src="http://www.maisondolci.it/images/msndl-img/team/male.png" alt="">
+              <div>
+                <div class="contact__name">Marco</div>
+                <small class="contact__info">Lorem ipsum dolor sit amet</small>
+              </div>
+              <small class="ora">ora</small>
+            </div>
+            <!-- LAYOUT CONTATTO -->
+            <div class="contact" data-contatto="matteo">
+              <img src="https://villamafalda.com/wp-content/uploads/2017/04/Doctor_avatar1.png" alt="">
+              <div>
+                <div class="contact__name">Matteo</div>
+                <small class="contact__info">Lorem ipsum dolor sit amet</small>
+              </div>
+              <small class="ora">ora</small>
+            </div>
+            <!-- LAYOUT CONTATTO -->
+            <div class="contact" data-contatto="martina">
+              <img src="http://www.maisondolci.it/images/msndl-img/team/female.png" alt="">
+              <div>
+                <div class="contact__name">Martina</div>
+                <small class="contact__info">Lorem ipsum dolor sit amet</small>
+              </div>
+              <small class="ora">ora</small>
+            </div>
+            <!-- LAYOUT CONTATTO -->
+            <div class="contact" data-contatto="pietro">
+              <img src="http://blog.gosocket.net/wp-content/uploads/2016/03/test1.png" alt="">
+              <div>
+                <div class="contact__name">Pietro</div>
+                <small class="contact__info">Lorem ipsum dolor sit amet</small>
+              </div>
+              <small class="ora">ora</small>
+            </div>
+            <!-- LAYOUT CONTATTO -->
+            <div class="contact" data-contatto="samuele">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSd2npCWKgnzAsrUICqLEBCOotL4HHf-vEeDPqgPMoCUnMF2q8" alt="">
+              <div>
+                <div class="contact__name">Samuele</div>
+                <small class="contact__info">Lorem ipsum dolor sit amet</small>
+              </div>
+              <small class="ora">ora</small>
+            </div>
+            <!-- LAYOUT CONTATTO -->
+            <div class="contact" data-contatto="fabio">
+              <img src="https://www.presidia.it/wp-content/uploads/2015/09/flat-faces-icons-circle-3.png" alt="">
+              <div>
+                <div class="contact__name">Fabio</div>
+                <small class="contact__info">Lorem ipsum dolor sit amet</small>
+              </div>
+              <small class="ora">ora</small>
+            </div>
+            <!-- LAYOUT CONTATTO -->
+            <div class="contact" data-contatto="michele">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy3T1HQvuoD2d_W8BPi_VDMIDuz27QnLV83lUYr7wJnxadaVlB" alt="">
+              <div>
+                <div class="contact__name">Michele</div>
+                <small class="contact__info">Lorem ipsum dolor sit amet</small>
+              </div>
+              <small class="ora">ora</small>
+            </div>
+
+          </div>
+
+
+          <!-- CONTENITORI MESSAGGI -->
+          <div class="message active" data-conversazione="marco"></div>
+          <div class="message" data-conversazione="matteo"></div>
+          <div class="message" data-conversazione="martina"></div>
+          <div class="message" data-conversazione="pietro"></div>
+          <div class="message" data-conversazione="samuele"></div>
+          <div class="message" data-conversazione="fabio"></div>
+          <div class="message" data-conversazione="michele"></div>
+
+          <!-- LAYOUT MESSAGGI -->
           <div class="template">
-            <div class="utente">
-              <!-- <i class="fas fa-check"></i> -->
 
+            <div class="utente">
+              <span class="text_utente"></span>
+              <i class="fas fa-check-double doppia_spunta"></i>
               <div class="dropdown__menu">
                 <ul>
                   <li id="modifica">modifica</li>
                   <li id="delete">cancella</li>
                 </ul>
               </div>
-
             </div>
 
+            <div class="interlocutore">
+              <span class="text_interlocutore"></span>
+            </div>
 
-
-            <!-- <div class="interlocutore"><i class="fas fa-check-double"></i></div> -->
           </div>
 
+
+          <!-- INPUT PER SCRIVERE IL MESSAGGIO -->
           <div class="write">
             <i class="far fa-smile fa-2x"></i>
             <input placeholder="Scrivi un messaggio"class="testo"type="text" name="" value="">
-            <i class="fas fa-microphone fa-2x"></i>
+            <i class="fas mic fa-microphone fa-2x"></i>
+            <i class="fas send fa-paper-plane fa-2x"></i>
           </div>
 
-          <div class="backup">
-
-          </div>
 
         </div>
     </div>
