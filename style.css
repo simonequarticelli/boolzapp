@@ -145,7 +145,7 @@ img{
   border-radius: 5px 0px 5px 5px;
   max-width: 400px;
   align-self: flex-end;
-  padding:10px;
+  padding:15px;
   margin: 10px;
   word-break: break-all;
   position: relative;
@@ -155,9 +155,10 @@ img{
   border-radius: 0px 5px 5px 5px;
   max-width: 400px;
   align-self: flex-start;
-  padding:10px;
+  padding:15px;
   margin: 10px;
   word-break: break-all;
+  position: relative;
 }
 input{
   border-radius: 20px;
@@ -184,7 +185,7 @@ input{
   width: 120px;
   height: 100px;
   position: absolute;
-  right: 0;
+  right: 5px;
   display: none;
   background-color: #fff;
   border-radius: 5px;
@@ -195,6 +196,7 @@ input{
   list-style-type: none;
   cursor: pointer;
   padding:10px;
+  margin-top: 7px;
   text-align: center;
 }
 .dropdown__menu ul li:hover{
@@ -208,9 +210,28 @@ input{
 }
 .ora{
   position: absolute;
-  right: 0;
-  padding: 10px;
+  right: 25px;
+  bottom: 5px;
 }
-.send{
+#plane{
   display: none;
+}
+.icon{
+  position: absolute;
+  right:60px;
+}
+.fa-angle-down{
+  display: none;
+  position: absolute;
+  top:15px;
+  right:15px;
+}
+.doppia_spunta{
+  font-size: 13px;
+  position: absolute;
+  bottom:7px;
+  right:7px;
+}
+.text_utente{
+  margin-right: 60px;
 }

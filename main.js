@@ -21,6 +21,7 @@
 
 $(document).ready(function(){
 
+  //creo funzione di scroll visto il ripetuto utilizzo
   function scrollTop(){
     //vado a leggare l'altezza del contenitore della chat tramite js-plain
     var scroll = $('.message.active')[0].scrollHeight;
@@ -51,9 +52,6 @@ $(document).ready(function(){
     });
   });
 
-
-
-
   //AL CLICK DEL CONTATTO AGGIORNO LE INFO
   $('.contact').click(function(){
 
@@ -82,67 +80,105 @@ $(document).ready(function(){
 
   });
 
-    //intercetto il tasto INVIO
-    $('.testo').keypress(function(event){
+  $('#plane').click(function(){
 
-      //salvo valore dell'utente
-      var messaggio_utente = $('.testo').val();
+    //salvo valore dell'utente
+    var messaggio_utente = $('.testo').val();
 
-      if (event.which == 13) {
+      if (messaggio_utente.length > 0) { //<-- se la lunghezza del messaggio è maggiore di 0 allora...
+        //salvo il clear
+        $('.testo').val('');
 
-        if (messaggio_utente.length > 0) { //<-- se la lunghezza del messaggio è maggiore di 0 allora...
-          //salvo il clear
-          $('.testo').val('');
+        //faccio il clone del messaggio
+        var copia_utente = $('.template .utente').clone();
 
-          //faccio il clone del messaggio
-          var copia_utente = $('.template .utente').clone();
+        //scrivo il messaggio nella classe .utente
+        copia_utente.children('.text_utente').text(messaggio_utente);
 
-          //scrivo il messaggio nella classe .utente
-          copia_utente.children('.text_utente').text(messaggio_utente);
+        //appendo il messaggio nella classe .message
+        $('.message.active').append(copia_utente);
 
-          //appendo il messaggio nella classe .message
-          $('.message.active').append(copia_utente);
+        //creo funzione di scroll visto il ripetuto utilizzo
+        scrollTop();
+      }
 
-          //creo funzione di scroll visto il ripetuto utilizzo
+  });
 
 
-          scrollTop();
 
-          //dopo un secondo cambio il colore dell'icona
-          setTimeout(function(){
-            $('.doppia_spunta').css('color', '#74b9ff');
-          }, 2000);
 
-          setTimeout(function(){
-            switch (messaggio_utente) {
-              case 'ciao':
-                //faccio il clone del messaggio
-                var copia_cpu = $('.template .interlocutore').clone();
-                //scrivo il messaggio nella classe .utente
-                copia_cpu.children('.text_interlocutore').text('ciao');
-                //appendo il messaggio nella classe .message
-                $('.message.active').append(copia_cpu);
-                scrollTop();
-              break;
-              case 'come stai?':
-                //faccio il clone del messaggio
-                var copia_cpu = $('.template .interlocutore').clone();
-                //scrivo il messaggio nella classe .utente
-                copia_cpu.text('bene tu?');
-                //appendo il messaggio nella classe .message
-                $('.message.active').append(copia_cpu);
-                scrollTop();
-              break;
-              case 'bene':
-                //faccio il clone del messaggio
-                var copia_cpu = $('.template .interlocutore').clone();
-                //scrivo il messaggio nella classe .utente
-                copia_cpu.text('ok');
-                //appendo il messaggio nella classe .message
-                $('.message.active').append(copia_cpu);
-                scrollTop();
-              break;
-              default:
+  //intercetto il tasto INVIO
+  $('.testo').keypress(function(event){
+
+    //salvo valore dell'utente
+    var messaggio_utente = $('.testo').val();
+
+    $('#plane').show(200);
+    $('#mic').hide(200);
+
+    if (event.which == 13) {
+
+      if (messaggio_utente.length > 0) { //<-- se la lunghezza del messaggio è maggiore di 0 allora...
+        //salvo il clear
+        $('.testo').val('');
+
+        function time(){
+          var ora = new Date;
+          //console.log(ora);
+          var ore = ora.getHours();
+          //console.log(ore);
+          var minuti = ora.getMinutes();
+          //console.log(minuti);
+          var ora_messaggi = ore + ':' + minuti;
+          console.log(ora_messaggi);
+
+          return ora_messaggi;
+        }
+
+        //faccio il clone del messaggio
+        var copia_utente = $('.template .utente').clone();
+
+        //scrivo il messaggio nella classe .utente
+        copia_utente.children('.text_utente').text(messaggio_utente);
+
+        //scrivo l'ora corrente nel messaggio_utente
+        copia_utente.children('.ora').text(time());
+
+        //appendo il messaggio nella classe .message
+        $('.message.active').append(copia_utente);
+
+
+        scrollTop();
+
+        $('#plane').hide(200);
+        $('#mic').show(200);
+
+        //dopo un secondo cambio il colore dell'icona
+        setTimeout(function(){
+          $('.doppia_spunta').css('color', '#74b9ff');
+        }, 2000);
+
+        setTimeout(function(){
+          switch (messaggio_utente) {
+            case 'ciao':
+              //faccio il clone del messaggio
+              var copia_cpu = $('.template .interlocutore').clone();
+              //scrivo il messaggio nella classe .utente
+              copia_cpu.children('.text_interlocutore').text('ciao');
+              //appendo il messaggio nella classe .message
+              $('.message.active').append(copia_cpu);
+              scrollTop();
+            break;
+            case 'come stai?':
+              //faccio il clone del messaggio
+              var copia_cpu = $('.template .interlocutore').clone();
+              //scrivo il messaggio nella classe .utente
+              copia_cpu.text('bene tu?');
+              //appendo il messaggio nella classe .message
+              $('.message.active').append(copia_cpu);
+              scrollTop();
+            break;
+            case 'bene':
               //faccio il clone del messaggio
               var copia_cpu = $('.template .interlocutore').clone();
               //scrivo il messaggio nella classe .utente
@@ -150,56 +186,77 @@ $(document).ready(function(){
               //appendo il messaggio nella classe .message
               $('.message.active').append(copia_cpu);
               scrollTop();
-            }
-          }, 1000);
-        }
-
-
-
+            break;
+            default:
+            //faccio il clone del messaggio
+            var copia_cpu = $('.template .interlocutore').clone();
+            //scrivo il messaggio nella classe .utente
+            copia_cpu.text('ok');
+            //appendo il messaggio nella classe .message
+            $('.message.active').append(copia_cpu);
+            scrollTop();
+          }
+        }, 1000);
       }
+    }
 
 
-
-
-      //DA PERFEZIONARE
-
-
-      // //MODIFICARE IL MESSAGGIO
-      // $(document).on('click', '#modifica', function(){
-      //
-      //   //riassegno il testo da modificare alla barra
-      //   var mess = $('.testo').val(messaggio_utente);
-      //
-      //   //chiudo la tendina
-      //   $(this).closest('.dropdown__menu').removeClass('active');
-      //
-      //
-      // });
-
-    //funzione per ricare la pagina e per far apparire menu
-    $(document).on('click', '.doppia_spunta', function(){
-      //al click del fratello .dropdown__menu agg o togli .active
-      $(this).siblings('.dropdown__menu').toggleClass('active');
-      //CERCARE DI IMPEDIRE L'APERTURA DELLE ALTRE TENDINE
-
-
+    //AGGIUNGO EFFETTI MESSAGGI UTENTE
+    $('.utente').mouseenter(function(){
+      $(this).find('.fa-angle-down').fadeIn(200);
+      $(this).find('.doppia_spunta').hide();
+      $(this).find('.ora').hide();
     });
 
-    //CAMBIO L'ICONA AL FOCUS
+    $('.utente').mouseleave(function(){
+      $(this).find('.fa-angle-down').hide();
+      $(this).find('.doppia_spunta').fadeIn(200);
+      $(this).find('.ora').fadeIn(200);
+    });
 
+    //DA PERFEZIONARE
 
+    // //MODIFICARE IL MESSAGGIO
+    // $(document).on('click', '#modifica', function(){
+    //
+    //   //riassegno il testo da modificare alla barra
+    //   var mess = $('.testo').val(messaggio_utente);
+    //
+    //   //chiudo la tendina
+    //   $(this).closest('.dropdown__menu').removeClass('active');
+    //
+    // });
+
+    //funzione per ricare la pagina e per far apparire menu
+    $(document).on('click', '.fa-angle-down', function(){
+      //al click del fratello .dropdown__menu agg o togli .active
+      $(this).siblings('.dropdown__menu').toggleClass('active');
+    });
+
+    //chiudo i dropdown__menu al click del contenitore attivo dei messaggi
+    //(cosi facendo alterno l'apertura e la chiusura delle tendine)
+    $('.message.active').click(function(){
+      $('.dropdown__menu').removeClass('active');
+    });
 
     $(document).on('click', '#delete', function(){
       //vado in cerca verso l'alto della classe da eliminare
       $(this).closest('.utente').remove();
     });
 
-
   });
 
+  //CAMBIO L'ICONA AL FOCUS
+  $('.testo').focus(function(){
 
+    $('#mic').hide(200); //<-- inserisco il parametro dei millisec per avere il click su #plane
+    $('#plane').show(200);
 
+  }).blur(function(){
 
+    $('#plane').hide(200);
+    $('#mic').show(200);
 
+  });
 
 });
