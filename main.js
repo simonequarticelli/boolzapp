@@ -31,6 +31,31 @@ $(document).ready(function(){
 
   scrollTop();
 
+  function time(){
+    var ora = new Date;
+    //console.log(ora);
+    var ore = ora.getHours();
+    //console.log(ore);
+    var minuti = ora.getMinutes();
+    //console.log(minuti);
+    if (minuti < 10) {
+      minuti = '0' + minuti;
+    }
+    if (ora < 10) {
+      ora = '0' + ora;
+    }
+    var ora_messaggi = ore + ':' + minuti;
+    //console.log(ora_messaggi);
+
+    return ora_messaggi;
+  }
+
+  time();
+
+  $('.ora').text(time());
+
+  $('.info__contact__left').find('span').text(time());
+
   //RICERCA CONTATTI
   $('#search').keyup(function(){
 
@@ -68,6 +93,7 @@ $(document).ready(function(){
     $('.info__contact__left h4').text(nome);
     $('.info__contact__img').html(img);
 
+    //associo contatti e conversazioni
     var contatto = $(this).attr('data-contatto');
     //console.log(contatto);
     var conversazione_contatto = $('.message[data-conversazione="'+contatto+'"]');
@@ -76,7 +102,6 @@ $(document).ready(function(){
     conversazione_contatto.addClass('active');
 
     scrollTop();
-
 
   });
 
@@ -104,9 +129,6 @@ $(document).ready(function(){
 
   });
 
-
-
-
   //intercetto il tasto INVIO
   $('.testo').keypress(function(event){
 
@@ -122,18 +144,7 @@ $(document).ready(function(){
         //salvo il clear
         $('.testo').val('');
 
-        function time(){
-          var ora = new Date;
-          //console.log(ora);
-          var ore = ora.getHours();
-          //console.log(ore);
-          var minuti = ora.getMinutes();
-          //console.log(minuti);
-          var ora_messaggi = ore + ':' + minuti;
-          console.log(ora_messaggi);
-
-          return ora_messaggi;
-        }
+        time();
 
         //faccio il clone del messaggio
         var copia_utente = $('.template .utente').clone();
@@ -147,16 +158,20 @@ $(document).ready(function(){
         //appendo il messaggio nella classe .message
         $('.message.active').append(copia_utente);
 
+        //dopo un secondo cambio il colore dell'icona
+        setTimeout(function(){
+          //vado a prendere nel contenitore con
+          //la classe active l'ultimo messaggio e applico il css
+          $('.message.active').last('.utente').find('.doppia_spunta').css('color', '#74b9ff');
+        }, 2000);
+
 
         scrollTop();
 
         $('#plane').hide(200);
         $('#mic').show(200);
 
-        //dopo un secondo cambio il colore dell'icona
-        setTimeout(function(){
-          $('.doppia_spunta').css('color', '#74b9ff');
-        }, 2000);
+
 
         setTimeout(function(){
           switch (messaggio_utente) {
@@ -165,6 +180,8 @@ $(document).ready(function(){
               var copia_cpu = $('.template .interlocutore').clone();
               //scrivo il messaggio nella classe .utente
               copia_cpu.children('.text_interlocutore').text('ciao');
+              //scrivo l'ora corrente nel messaggio_cpu
+              copia_cpu.children('.ora_cpu').text(time());
               //appendo il messaggio nella classe .message
               $('.message.active').append(copia_cpu);
               scrollTop();
@@ -173,77 +190,93 @@ $(document).ready(function(){
               //faccio il clone del messaggio
               var copia_cpu = $('.template .interlocutore').clone();
               //scrivo il messaggio nella classe .utente
-              copia_cpu.text('bene tu?');
+              copia_cpu.children('.text_interlocutore').text('bene tu?');
               //appendo il messaggio nella classe .message
               $('.message.active').append(copia_cpu);
+              //scrivo l'ora corrente nel messaggio_cpu
+              copia_cpu.children('.ora_cpu').text(time());
               scrollTop();
             break;
             case 'bene':
               //faccio il clone del messaggio
               var copia_cpu = $('.template .interlocutore').clone();
               //scrivo il messaggio nella classe .utente
-              copia_cpu.text('ok');
+              copia_cpu.children('.text_interlocutore').text('ok');
               //appendo il messaggio nella classe .message
               $('.message.active').append(copia_cpu);
+              //scrivo l'ora corrente nel messaggio_cpu
+              copia_cpu.children('.ora_cpu').text(time());
               scrollTop();
             break;
             default:
+
             //faccio il clone del messaggio
             var copia_cpu = $('.template .interlocutore').clone();
             //scrivo il messaggio nella classe .utente
-            copia_cpu.text('ok');
+            copia_cpu.children('.text_interlocutore').text('ok');
             //appendo il messaggio nella classe .message
             $('.message.active').append(copia_cpu);
+            //scrivo l'ora corrente nel messaggio_cpu
+            copia_cpu.children('.ora_cpu').text(time());
             scrollTop();
+            //AGGIUNGO EFFETTI MESSAGGI UTENTE
+            $('.utente').mouseenter(function(){
+              $(this).find('.fa-angle-down').fadeIn(200);
+              $(this).find('.doppia_spunta').hide();
+              $(this).find('.ora').hide();
+            });
+
+            $('.utente').mouseleave(function(){
+              $(this).find('.fa-angle-down').hide();
+              $(this).find('.doppia_spunta').fadeIn(200);
+              $(this).find('.ora').fadeIn(200);
+            });
+
+            //AGGIUNGO EFFETTI MESSAGGI CPU
+            $('.interlocutore').mouseenter(function(){
+              $(this).find('.fa-angle-down').fadeIn(200);
+              $(this).find('.ora_cpu').hide();
+            });
+
+            $('.interlocutore').mouseleave(function(){
+              $(this).find('.fa-angle-down').hide();
+              $(this).find('.ora_cpu').fadeIn(200);
+            });
           }
         }, 1000);
       }
     }
 
+    //DA PERFEZIONARE  -->(NON RIESCO A SOVRASCRIVERE IL MESSAGGIO)<--
 
-    //AGGIUNGO EFFETTI MESSAGGI UTENTE
-    $('.utente').mouseenter(function(){
-      $(this).find('.fa-angle-down').fadeIn(200);
-      $(this).find('.doppia_spunta').hide();
-      $(this).find('.ora').hide();
+    //MODIFICARE IL MESSAGGIO
+    $(document).on('click', '#modifica', function(){
+    $(this).closest('.utente').find('.text_utente').text();
+    console.log($(this).closest('.utente').find('.text_utente').text());
+    //riassegno il testo da modificare alla barra
+    $('.testo').val(messaggio_utente);
+
     });
 
-    $('.utente').mouseleave(function(){
-      $(this).find('.fa-angle-down').hide();
-      $(this).find('.doppia_spunta').fadeIn(200);
-      $(this).find('.ora').fadeIn(200);
-    });
+  });
 
-    //DA PERFEZIONARE
+  //funzione per ricare la pagina e per far apparire menu
+  $(document).on('click', '.fa-angle-down', function(){
+    //al click del fratello .dropdown__menu agg o togli .active
+    $(this).siblings('.dropdown__menu').toggleClass('active');
+  });
 
-    // //MODIFICARE IL MESSAGGIO
-    // $(document).on('click', '#modifica', function(){
-    //
-    //   //riassegno il testo da modificare alla barra
-    //   var mess = $('.testo').val(messaggio_utente);
-    //
-    //   //chiudo la tendina
-    //   $(this).closest('.dropdown__menu').removeClass('active');
-    //
-    // });
+  //chiudo i dropdown__menu al click del contenitore attivo dei messaggi
+  //(cosi facendo alterno l'apertura e la chiusura delle tendine)
+  $('.message.active').click(function(){
+    $('.dropdown__menu').removeClass('active');
+  });
 
-    //funzione per ricare la pagina e per far apparire menu
-    $(document).on('click', '.fa-angle-down', function(){
-      //al click del fratello .dropdown__menu agg o togli .active
-      $(this).siblings('.dropdown__menu').toggleClass('active');
-    });
-
-    //chiudo i dropdown__menu al click del contenitore attivo dei messaggi
-    //(cosi facendo alterno l'apertura e la chiusura delle tendine)
-    $('.message.active').click(function(){
-      $('.dropdown__menu').removeClass('active');
-    });
-
-    $(document).on('click', '#delete', function(){
-      //vado in cerca verso l'alto della classe da eliminare
-      $(this).closest('.utente').remove();
-    });
-
+  $(document).on('click', '#delete', function(){
+    //vado in cerca verso l'alto della classe da eliminare
+    $(this).closest('.utente').remove();
+    //elimino messaggi cpu
+    $(this).closest('.interlocutore').remove();
   });
 
   //CAMBIO L'ICONA AL FOCUS

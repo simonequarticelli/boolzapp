@@ -212,6 +212,13 @@ input{
   position: absolute;
   right: 25px;
   bottom: 5px;
+  font-size: 11px;
+}
+.ora_cpu{
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  font-size: 11px;
 }
 #plane{
   display: none;
@@ -232,6 +239,7 @@ input{
   bottom:7px;
   right:7px;
 }
-.text_utente{
+.text_utente,
+.text_interlocutore{
   margin-right: 60px;
 }
