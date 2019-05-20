@@ -233,11 +233,12 @@ input{
   top:15px;
   right:15px;
 }
-.doppia_spunta{
+.spunta_1{
   font-size: 13px;
   position: absolute;
   bottom:7px;
-  right:7px;
+  right:5px;
+  z-index: 1;
 }
 .text_utente,
 .text_interlocutore{

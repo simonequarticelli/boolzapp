@@ -132,7 +132,7 @@ $(document).ready(function(){
       setTimeout(function(){
         //vado a prendere nel contenitore con
         //la classe active l'ultimo messaggio e applico il css
-        $('.message.active').last('.utente').find('.doppia_spunta').css('color', '#74b9ff');
+        $('.message.active').last('.utente').find('.spunta_1').css('color', '#74b9ff');
       }, 2000);
 
       scrollTop();
@@ -186,13 +186,13 @@ $(document).ready(function(){
           //AGGIUNGO EFFETTI MESSAGGI UTENTE
           $('.utente').mouseenter(function(){
             $(this).find('.fa-angle-down').fadeIn(200);
-            $(this).find('.doppia_spunta').hide();
+            $(this).find('.spunta_1').hide();
             $(this).find('.ora').hide();
           });
 
           $('.utente').mouseleave(function(){
             $(this).find('.fa-angle-down').hide();
-            $(this).find('.doppia_spunta').fadeIn(200);
+            $(this).find('.spunta_1').fadeIn(200);
             $(this).find('.ora').fadeIn(200);
           });
 
@@ -244,7 +244,7 @@ $(document).ready(function(){
         setTimeout(function(){
           //vado a prendere nel contenitore con
           //la classe active l'ultimo messaggio e applico il css
-          $('.message.active').last('.utente').find('.doppia_spunta').css('color', '#74b9ff');
+          $('.message.active').last('.utente').find('.spunta_1').css('color', '#74b9ff');
         }, 2000);
 
         scrollTop();
@@ -301,13 +301,13 @@ $(document).ready(function(){
             //AGGIUNGO EFFETTI MESSAGGI UTENTE
             $('.utente').mouseenter(function(){
               $(this).find('.fa-angle-down').fadeIn(200);
-              $(this).find('.doppia_spunta').hide();
+              $(this).find('.spunta_1').hide();
               $(this).find('.ora').hide();
             });
 
             $('.utente').mouseleave(function(){
               $(this).find('.fa-angle-down').hide();
-              $(this).find('.doppia_spunta').fadeIn(200);
+              $(this).find('.spunta_1').fadeIn(200);
               $(this).find('.ora').fadeIn(200);
             });
 
